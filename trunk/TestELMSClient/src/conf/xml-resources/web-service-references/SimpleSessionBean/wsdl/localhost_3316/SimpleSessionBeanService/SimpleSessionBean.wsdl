@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?><definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://session.elms.uj.edu/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" targetNamespace="http://session.elms.uj.edu/" name="SimpleSessionBeanService">
+  <types>
+    <xsd:schema>
+      <xsd:import namespace="http://session.elms.uj.edu/" schemaLocation="http://DOISSETEP:3316/SimpleSessionBeanService/SimpleSessionBean/__container$publishing$subctx/META-INF/wsdl/SimpleSessionBeanService_schema1.xsd" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/"/>
+    </xsd:schema>
+  </types>
+  <message name="findBooks">
+    <part name="parameters" element="tns:findBooks"/>
+  </message>
+  <message name="findBooksResponse">
+    <part name="parameters" element="tns:findBooksResponse"/>
+  </message>
+  <message name="getBookCopies">
+    <part name="parameters" element="tns:getBookCopies"/>
+  </message>
+  <message name="getBookCopiesResponse">
+    <part name="parameters" element="tns:getBookCopiesResponse"/>
+  </message>
+  <portType name="SimpleSessionBean">
+    <operation name="findBooks">
+      <input message="tns:findBooks"/>
+      <output message="tns:findBooksResponse"/>
+    </operation>
+    <operation name="getBookCopies">
+      <input message="tns:getBookCopies"/>
+      <output message="tns:getBookCopiesResponse"/>
+    </operation>
+  </portType>
+  <binding name="SimpleSessionBeanPortBinding" type="tns:SimpleSessionBean">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+    <operation name="findBooks">
+      <soap:operation soapAction=""/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="getBookCopies">
+      <soap:operation soapAction=""/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+  </binding>
+  <service name="SimpleSessionBeanService">
+    <port name="SimpleSessionBeanPort" binding="tns:SimpleSessionBeanPortBinding">
+      <soap:address location="http://DOISSETEP:3316/SimpleSessionBeanService/SimpleSessionBean" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/"/>
+    </port>
+  </service>
+</definitions>

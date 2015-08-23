@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema version="1.0" targetNamespace="http://session.elms.uj.edu/" xmlns:tns="http://session.elms.uj.edu/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <xs:element name="findBooks" type="tns:findBooks"/>
+
+  <xs:element name="findBooksResponse" type="tns:findBooksResponse"/>
+
+  <xs:element name="getBookCopies" type="tns:getBookCopies"/>
+
+  <xs:element name="getBookCopiesResponse" type="tns:getBookCopiesResponse"/>
+
+  <xs:complexType name="findBooks">
+    <xs:sequence>
+      <xs:element name="arg0" type="tns:searchPattern" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="searchPattern">
+    <xs:complexContent>
+      <xs:extension base="tns:abstractBook">
+        <xs:sequence>
+          <xs:element name="onlyAvailableCopies" type="xs:boolean"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="abstractBook" abstract="true">
+    <xs:sequence>
+      <xs:element name="author" type="xs:string" minOccurs="0"/>
+      <xs:element name="publishYear" type="xs:int"/>
+      <xs:element name="publisher" type="xs:string" minOccurs="0"/>
+      <xs:element name="title" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="findBooksResponse">
+    <xs:sequence>
+      <xs:element name="return" type="tns:book" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="book">
+    <xs:complexContent>
+      <xs:extension base="tns:abstractBook">
+        <xs:sequence>
+          <xs:element name="bookId" type="xs:int"/>
+          <xs:element name="borrowed" type="xs:boolean"/>
+          <xs:element name="hasAvailableCopies" type="xs:boolean"/>
+          <xs:element name="returnDate" type="xs:dateTime" minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="getBookCopies">
+    <xs:sequence>
+      <xs:element name="arg0" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getBookCopiesResponse">
+    <xs:sequence>
+      <xs:element name="return" type="tns:reservationDetails" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="reservationDetails">
+    <xs:sequence>
+      <xs:element name="bookCopy" type="tns:bookCopy" minOccurs="0"/>
+      <xs:element name="queueSize" type="xs:int"/>
+      <xs:element name="youInQueue" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="bookCopy">
+    <xs:sequence>
+      <xs:element name="book" type="tns:book" minOccurs="0"/>
+      <xs:element name="copyId" type="xs:int"/>
+      <xs:element name="returnDate" type="xs:dateTime" minOccurs="0"/>
+      <xs:element name="state" type="tns:state" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:simpleType name="state">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="REQUESTED"/>
+      <xs:enumeration value="UNAVAIL"/>
+      <xs:enumeration value="BORROWED"/>
+      <xs:enumeration value="AVAIL"/>
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>
+

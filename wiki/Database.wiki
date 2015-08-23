@@ -1,0 +1,13 @@
+#summary How to deal with database
+#labels Phase-Implementation,Featured
+
+= Instrukcja =
+ # Menu głowne -> Tools -> JavaDB Database -> Create JavaDB Database
+ # Jako nazwę bazy ustawiasz _elms_
+ # Szukasz w swoim katalogu domowym (powyżej "Moje dokumenty") katalogu _.netbeans-derby_. W nim powinien być katalog _elms_.
+ # Ściągasz z [http://ztsr-j2ee.googlecode.com/files/elms.zip Downloads] naszego projektu spakowaną bazę danych. Rozpakowywujesz.
+ # Jeśli dobrze pójdzie, zadziała :)
+
+= Testowanie bazy =
+ # Klikasz prawym klawiszem na "ELMS" i "Run". Jak zgłosi błąd - to jeszcze raz.
+ # Łączysz się z http://localhost:8080/ELMS-war/ i klikasz np. _all readers_

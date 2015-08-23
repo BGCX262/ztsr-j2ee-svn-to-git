@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
+
+
+<system systemId="http://localhost:3316/SimpleSessionBeanService/SimpleSessionBean?wsdl" uri="src/conf/xml-resources/web-service-references/SimpleSessionBean/wsdl/localhost_3316/SimpleSessionBeanService/SimpleSessionBean.wsdl"/>
+<system systemId="http://DOISSETEP:3316/SimpleSessionBeanService/SimpleSessionBean/__container$publishing$subctx/META-INF/wsdl/SimpleSessionBeanService_schema1.xsd" uri="src/conf/xml-resources/web-service-references/SimpleSessionBean/wsdl/DOISSETEP_3316/SimpleSessionBeanService/SimpleSessionBean/__container_publishing_subctx/META-INF/wsdl/SimpleSessionBeanService_schema1.xsd"/>
+</catalog>
